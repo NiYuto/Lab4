@@ -1,9 +1,9 @@
-.586 
+.686 
 .XMM
 .MODEL flat,C
 .DATA
 
-n dd 50.0
+n dd 200.0
 res dd 0
 a dd 0.0
 b dd 1.0
@@ -19,8 +19,11 @@ extern MathC:near
 
 public func
 	func proc C ;
+	mov ebx, esp
+	;add ebx, 4
+	
 	finit
-
+	
 	fld n
 	fld1
 	fldz
@@ -86,7 +89,7 @@ public func
 		fst res
 		finit
 		fld res
-		push res
+		mov esp, ebx
 		ret
 
 func endp
